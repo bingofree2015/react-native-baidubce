@@ -10,9 +10,11 @@ import com.baidubce.services.vod.VodClient;
 import com.baidubce.services.vod.model.GenerateMediaIdResponse;
 import com.baidubce.services.vod.model.ProcessMediaRequest;
 import com.baidubce.services.vod.model.ProcessMediaResponse;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
 
 import java.io.File;
@@ -22,6 +24,7 @@ import java.util.Map;
 
 public class RNBaiduBceModule extends ReactContextBaseJavaModule {
 
+    private final ReactApplicationContext reactContext;
     private static final String DURATION_SHORT_KEY = "SHORT";
     private static final String DURATION_LONG_KEY = "LONG";
 
@@ -31,6 +34,8 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
 
     public RNBaiduBceModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        this.reactContext = reactContext;
+        initVodAndBosClient();
     }
 
     @Override
@@ -45,12 +50,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);
         return constants;
     }
-
-    @ReactMethod
-    public void show(String message) {
-        Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
     public void initVodAndBosClient() {
         // tempAk, tempSk, sessionToken are from your servers
         // BOS和VOD公用同一种认证
@@ -72,6 +71,31 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         bosClient = new BosClient(bosConfig);
     }
 
+
+    @ReactMethod
+    public void show(String message, final Promise promise) {
+        Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        this.emit("observerShow", "call function success");
+        if(message.isEmpty()){
+            promise.resolve("success");
+        }else{
+            promise.reject("400", "empty string");
+        }
+    }
+
+    public void emit(String eventName, Object data){
+        try {
+            this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, data);
+        } catch (Exception e){
+            e.printStackTrace();;
+        }
+    }
+
+    @ReactMethod
+    public void getVodList(final Promise promise) {
+
+    }
+    
     String transcodingPresetGroupName = "vod.inbuilt.adaptive.hls"; // 模板名必须为VOD后台的模板组名称
     // transcodingPresetGroupName 传入null，表示默认模板组; 上传不转码时需要指定相应的模板组名字
     public void applyUploadAndProcess(final String filePath, final String title, final String description) {

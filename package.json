@@ -1,0 +1,28 @@
+{
+  "_from": "git+https://github.com/andrei0807/react-native-baidubce.git",
+  "_id": "react-native-baidubce@0.0.1",
+  "bugs": {
+    "url": "https://github.com/andrei0807/react-native-baidubce/issues"
+  },
+  "deprecated": false,
+  "keywords": [
+    "react-native",
+    "android",
+    "library"
+  ],
+  "license": "Unlicense",
+  "name": "react-native-baidubce",
+  "peerDependencies": {
+    "react-native": ">=0.38.0"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrei0807/react-native-baidubce.git"
+  },
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "version": "0.0.1"
+}

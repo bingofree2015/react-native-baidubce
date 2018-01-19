@@ -41,4 +41,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile files('libs/vod_upload_with_bos.jar')
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
 }

@@ -6,14 +6,19 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.services.bos.BosClient;
 import com.baidubce.services.bos.BosClientConfiguration;
+import com.baidubce.services.bos.model.BosObjectSummary;
+import com.baidubce.services.bos.model.ListObjectsResponse;
 import com.baidubce.services.vod.VodClient;
 import com.baidubce.services.vod.model.GenerateMediaIdResponse;
 import com.baidubce.services.vod.model.ProcessMediaRequest;
 import com.baidubce.services.vod.model.ProcessMediaResponse;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
 
@@ -35,7 +40,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
     public RNBaiduBceModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        initVodAndBosClient();
     }
 
     @Override
@@ -93,9 +97,19 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getVodList(final Promise promise) {
-
+        initVodAndBosClient();
+        WritableArray array = Arguments.createArray();
+        GenerateMediaIdResponse generateMediaIdresponse = vodClient.applyMedia();
+        String bucket = generateMediaIdresponse.getSourceBucket();
+        ListObjectsResponse list = bosClient.listObjects(bucket);
+        for(BosObjectSummary objectSummary : list.getContents()) {
+            WritableMap map = Arguments.createMap();
+            map.putString("mediaId", objectSummary.getKey());
+            array.pushMap(map);
+        }
+        promise.resolve(array);
     }
-    
+
     String transcodingPresetGroupName = "vod.inbuilt.adaptive.hls"; // 模板名必须为VOD后台的模板组名称
     // transcodingPresetGroupName 传入null，表示默认模板组; 上传不转码时需要指定相应的模板组名字
     public void applyUploadAndProcess(final String filePath, final String title, final String description) {

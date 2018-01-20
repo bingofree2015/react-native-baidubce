@@ -105,20 +105,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         }
     }
 
-    @ReactMethod
-    public void getVodList(final Promise promise) {
-        initVodAndBosClient();
-        WritableArray array = Arguments.createArray();
-        GenerateMediaIdResponse generateMediaIdresponse = vodClient.applyMedia();
-        String bucket = generateMediaIdresponse.getSourceBucket();
-        ListObjectsResponse list = bosClient.listObjects(bucket);
-        for(BosObjectSummary objectSummary : list.getContents()) {
-            WritableMap map = Arguments.createMap();
-            map.putString("mediaId", objectSummary.getKey());
-            array.pushMap(map);
-        }
-        promise.resolve(array);
-    }
 
     @ReactMethod
     public void applyUploadAndProcess(final String uriPath, final String title, final String description) {

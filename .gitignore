@@ -4,3 +4,6 @@
 android/react-native-baidubce.iml
 android/.gradle
 android/build
+android/.classpath
+android/.project
+android/.settings

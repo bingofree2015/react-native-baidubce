@@ -105,7 +105,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         }
     }
 
-
     @ReactMethod
     public void applyUploadAndProcess(final String uriPath, final String title, final String description) {
         new Thread() {

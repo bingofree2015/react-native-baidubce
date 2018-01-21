@@ -21,7 +21,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.reactnative.baiducloud.videoplayer.R;
+import com.reactnative.baibubce.R;
 import com.reactnative.baiducloud.videoplayer.info.SharedPrefsStore;
 import com.reactnative.baiducloud.videoplayer.popview.ResolutionListPopWindow;
 import com.reactnative.baiducloud.videoplayer.widget.BDCloudVideoView;
@@ -432,8 +432,8 @@ public class AdvancedMediaController extends RelativeLayout implements OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-        case R.id.ibtn_play:
+        int i = v.getId();
+        if (i == R.id.ibtn_play) {
             if (mVideoView == null) {
                 Log.d(TAG, "playButton checkstatus changed, but bindView=null");
             } else {
@@ -447,9 +447,8 @@ public class AdvancedMediaController extends RelativeLayout implements OnClickLi
                     mVideoView.start();
                 }
             }
-            break;
-        case R.id.ibtn_snapshot:
-            // take snapshot
+
+        } else if (i == R.id.ibtn_snapshot) {// take snapshot
             File sdDir = null;
             String strpath = null;
             Bitmap bitmap = null;
@@ -488,8 +487,7 @@ public class AdvancedMediaController extends RelativeLayout implements OnClickLi
             }
 
 
-            break;
-        case R.id.btn_fitmode:
+        } else if (i == R.id.btn_fitmode) {
             if (fitButton.getText().equals("填充")) {
                 // 转为 裁剪模式：视频保持比例缩放，不留黑边，填满显示区域的两边
                 mVideoView.setVideoScalingMode(BDCloudVideoView.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
@@ -501,19 +499,18 @@ public class AdvancedMediaController extends RelativeLayout implements OnClickLi
                 fitButton.setText("填充");
                 SharedPrefsStore.setPlayerFitMode(getContext(), false);
             }
-            break;
-        case R.id.ibtn_previous:
+
+        } else if (i == R.id.ibtn_previous) {
             if (preListener != null) {
                 preListener.onClick(v);
             }
-            break;
-        case R.id.ibtn_next:
+
+        } else if (i == R.id.ibtn_next) {
             if (nextListener != null) {
                 nextListener.onClick(v);
             }
-            break;
-        case R.id.btn_resolution:
-            // select a resolution
+
+        } else if (i == R.id.btn_resolution) {// select a resolution
             Log.v(TAG, "Show resolution clicked");
             if (this.availableResolution != null && this.availableResolution.length > 0) {
 
@@ -534,20 +531,18 @@ public class AdvancedMediaController extends RelativeLayout implements OnClickLi
                 // popup window
                 ResolutionListPopWindow popWindow =
                         ResolutionListPopWindow.createResolutionListPopWindow((Activity) getContext(),
-                        availableResolution, listener);
+                                availableResolution, listener);
                 popWindow.showPopupWindow(((Activity) getContext()).findViewById(R.id.root));
             } else {
                 Toast.makeText(this.getContext(), "该视频不是多码率视频(m3u8 master url)", Toast.LENGTH_SHORT).show();
             }
-            break;
-        case R.id.ibtn_download:
 
+        } else if (i == R.id.ibtn_download) {
             if (downloadListener != null) {
                 downloadListener.onClick(v);
             }
-            break;
-        default:
-            break;
+
+        } else {
         }
     }
 

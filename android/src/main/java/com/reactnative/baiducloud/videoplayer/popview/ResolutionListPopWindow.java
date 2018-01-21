@@ -14,7 +14,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
-import com.reactnative.baiducloud.videoplayer.R;
+import com.reactnative.baibubce.R;
 
 public class ResolutionListPopWindow extends PopupWindow {
     private View contentView;

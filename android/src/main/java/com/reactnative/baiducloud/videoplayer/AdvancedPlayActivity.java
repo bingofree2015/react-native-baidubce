@@ -29,7 +29,7 @@ import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
 import com.reactnative.baiducloud.videoplayer.popview.FullScreenUtils;
 import com.reactnative.baiducloud.videoplayer.widget.BDCloudVideoView;
 import com.reactnative.baiducloud.videoplayer.widget.BDCloudVideoView.PlayerState;
-
+import com.reactnative.baibubce.R;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;

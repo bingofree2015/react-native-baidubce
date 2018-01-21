@@ -14,7 +14,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.reactnative.baiducloud.videoplayer.R;
+import com.reactnative.baibubce.R;
 import com.reactnative.baiducloud.videoplayer.widget.BDCloudVideoView;
 import com.reactnative.baiducloud.videoplayer.widget.BDCloudVideoView.PlayerState;
 

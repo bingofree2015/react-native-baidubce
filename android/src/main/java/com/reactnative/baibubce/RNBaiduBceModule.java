@@ -33,7 +33,6 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
 import com.reactnative.baiducloud.videoplayer.AdvancedPlayActivity;
-import com.reactnative.baiducloud.videoplayer.MainActivity;
 import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
 
 import java.io.File;

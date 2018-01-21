@@ -19,6 +19,7 @@ import com.baidubce.services.bos.model.ListObjectsResponse;
 import com.baidubce.services.vod.VodClient;
 import com.baidubce.services.vod.model.GenerateMediaIdResponse;
 import com.baidubce.services.vod.model.GetMediaResourceResponse;
+import com.baidubce.services.vod.model.PlayableUrl;
 import com.baidubce.services.vod.model.ProcessMediaRequest;
 import com.baidubce.services.vod.model.ProcessMediaResponse;
 import com.facebook.react.bridge.Arguments;
@@ -35,6 +36,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RNBaiduBceModule extends ReactContextBaseJavaModule {
@@ -191,9 +193,28 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
             map.putString("PublishTime", response.getPublishTime());
             map.putString("Source", response.getSource());
             map.putString("Status", response.getStatus());
-            map.putString("PlayableUrl", response.getPlayableUrlList().toString());
-            map.putString("Thumbnail", response.getThumbnailList().toString());
+            map.putString("Title", response.getAttributes().getTitle());
+            map.putString("Description", response.getAttributes().getDescription());
+            map.putString("Size", response.getMeta().getSizeInBytes().toString());
+            map.putString("Length", response.getMeta().getDurationInSeconds().toString());
+            WritableArray urlArray = Arguments.createArray();
+            List<PlayableUrl> playableUrlList = response.getPlayableUrlList();
+            for(PlayableUrl object : playableUrlList){
+                WritableMap playableMap = Arguments.createMap();
+                playableMap.putString("Url", object.getUrl());
+                playableMap.putString("PresetGroupName", object.getTranscodingPresetName());
+                urlArray.pushMap(playableMap);
+            }
+            map.putArray("Urllist", urlArray);
+
+            WritableArray thumbArray = Arguments.createArray();
+            List<String> thumbList = response.getThumbnailList();
+            for(String thumb : thumbList) {
+                thumbArray.pushString(thumb);
+            }
+            map.putArray("ThumbnailList", thumbArray);
             map.putString("ResponseString", response.toString());
+            promise.resolve(map);
         }catch (Exception e) {
             e.printStackTrace();
             promise.reject("400","error");

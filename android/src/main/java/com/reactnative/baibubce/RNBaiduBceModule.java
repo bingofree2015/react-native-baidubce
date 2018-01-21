@@ -2,6 +2,7 @@ package com.reactnative.baidubce;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
@@ -31,6 +32,9 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
+import com.reactnative.baiducloud.videoplayer.AdvancedPlayActivity;
+import com.reactnative.baiducloud.videoplayer.MainActivity;
+import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -219,6 +223,17 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
             e.printStackTrace();
             promise.reject("400","error");
         }
+    }
+    @ReactMethod
+    public void playVideo(final String title, final String url){
+        VideoInfo info = new VideoInfo("Test", "http://iaaje4c72ewjajp0m17.exp.bcevod.com/mda-iabffeayx1c5uv0x/mda-iabffeayx1c5uv0x.m3u8");
+        Intent intent = null;
+        // SimplePlayActivity简易播放窗口，便于快速了解播放流程
+        //intent = new Intent(MainActivity.this, SimplePlayActivity.class);
+        // AdvancedPlayActivity高级播放窗口，内含丰富的播放控制逻辑
+        intent = new Intent(getReactApplicationContext(), AdvancedPlayActivity.class);
+        intent.putExtra("videoInfo", info);
+        getReactApplicationContext().startActivity(intent);
     }
     /**
      * Get a file path from a Uri. This will get the the path for Storage Access

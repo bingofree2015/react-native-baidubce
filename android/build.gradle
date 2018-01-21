@@ -24,7 +24,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
         // get version name from package.json version
@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/vod_upload_with_bos.jar')
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
 }

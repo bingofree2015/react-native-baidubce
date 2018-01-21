@@ -18,6 +18,7 @@ import com.baidubce.services.bos.model.BosObjectSummary;
 import com.baidubce.services.bos.model.ListObjectsResponse;
 import com.baidubce.services.vod.VodClient;
 import com.baidubce.services.vod.model.GenerateMediaIdResponse;
+import com.baidubce.services.vod.model.GetMediaResourceResponse;
 import com.baidubce.services.vod.model.ProcessMediaRequest;
 import com.baidubce.services.vod.model.ProcessMediaResponse;
 import com.facebook.react.bridge.Arguments;
@@ -90,7 +91,7 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
     public void show(String message, final Promise promise) {
         Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
         this.emit("observerShow", "call function success");
-        if(message.isEmpty()){
+        if(!message.isEmpty()){
             promise.resolve("success");
         }else{
             promise.reject("400", "empty string");
@@ -106,7 +107,7 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void applyUploadAndProcess(final String uriPath, final String title, final String description) {
+    public void applyUploadAndProcess(final String uriPath, final String title, final String description, final Promise promise) {
         new Thread() {
             @Override
             public void run() {
@@ -157,15 +158,18 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
                         long endTimestamp = System.currentTimeMillis();
                         //"上传完成，MediaId=" + uploadedMediaId + "; 耗时：" + (endTimestamp - startTimestamp) + "ms"
                         Log.v("SelfMsg", "success");
+                        promise.resolve(mediaId);
                     } else {
                         //"上传文件失败"
                         Log.v("SelfMsg", "failed");
+                        promise.reject("400", "上传文件失败");
                     }
 
                 } catch (Throwable e) {
                     e.printStackTrace();
                     // Exception means status failed
                     //"上传失败，错误信息：" + e.getMessage()
+                    promise.reject("401", "上传文件失败");
                 }
             }
         }.start();
@@ -178,6 +182,23 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         return null;
     }
 
+    @ReactMethod
+    public void queryMediaInfo(final String mediaId, final Promise promise) {
+        try {
+            GetMediaResourceResponse response = vodClient.getMediaResource(uploadedMediaId);
+            WritableMap map = Arguments.createMap();
+            map.putString("CreateTime", response.getCreateTime());
+            map.putString("PublishTime", response.getPublishTime());
+            map.putString("Source", response.getSource());
+            map.putString("Status", response.getStatus());
+            map.putString("PlayableUrl", response.getPlayableUrlList().toString());
+            map.putString("Thumbnail", response.getThumbnailList().toString());
+            map.putString("ResponseString", response.toString());
+        }catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("400","error");
+        }
+    }
     /**
      * Get a file path from a Uri. This will get the the path for Storage Access
      * Framework Documents, as well as the _data field for the MediaStore and

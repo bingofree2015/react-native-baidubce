@@ -205,7 +205,7 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
                 playableMap.putString("PresetGroupName", object.getTranscodingPresetName());
                 urlArray.pushMap(playableMap);
             }
-            map.putArray("Urllist", urlArray);
+            map.putArray("UrlList", urlArray);
 
             WritableArray thumbArray = Arguments.createArray();
             List<String> thumbList = response.getThumbnailList();

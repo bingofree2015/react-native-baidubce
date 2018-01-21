@@ -33,6 +33,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
 import com.reactnative.baiducloud.videoplayer.AdvancedPlayActivity;
+import com.reactnative.baiducloud.videoplayer.SimplePlayActivity;
 import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
 
 import java.io.File;
@@ -224,14 +225,18 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void playVideo(final String title, final String url){
-        VideoInfo info = new VideoInfo("Test", "http://iaaje4c72ewjajp0m17.exp.bcevod.com/mda-iabffeayx1c5uv0x/mda-iabffeayx1c5uv0x.m3u8");
+    public void playVideo(final String mediaId){
+        GetMediaResourceResponse response = vodClient.getMediaResource(uploadedMediaId);
+        String title = response.getAttributes().getTitle();
+        String url = response.getPlayableUrlList().get(0).getUrl();
+        VideoInfo info = new VideoInfo(title, url);
         Intent intent = null;
         // SimplePlayActivity简易播放窗口，便于快速了解播放流程
-        //intent = new Intent(MainActivity.this, SimplePlayActivity.class);
+        intent = new Intent(getReactApplicationContext(), SimplePlayActivity.class);
         // AdvancedPlayActivity高级播放窗口，内含丰富的播放控制逻辑
-        intent = new Intent(getReactApplicationContext(), AdvancedPlayActivity.class);
+        //intent = new Intent(getReactApplicationContext(), AdvancedPlayActivity.class);
         intent.putExtra("videoInfo", info);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getReactApplicationContext().startActivity(intent);
     }
     /**

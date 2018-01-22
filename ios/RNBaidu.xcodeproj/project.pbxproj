@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		18EB7B542016124D0016AE72 /* RNBaidu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaidu.m */; };
 		18EB7B552016124D0016AE72 /* RNBaidu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaidu.h */; };
+		18EB7B75201619FB0016AE72 /* BaiduBCESTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */; };
+		18EB7B76201619FB0016AE72 /* BaiduBCEBOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */; };
+		18EB7B77201619FB0016AE72 /* BaiduBCEVOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */; };
+		18EB7B78201619FB0016AE72 /* BaiduBCEBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */; };
+		18EB7B7A20161A100016AE72 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B7920161A100016AE72 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +33,11 @@
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB7B522016124D0016AE72 /* RNBaidu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaidu.h; sourceTree = "<group>"; };
 		18EB7B532016124D0016AE72 /* RNBaidu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaidu.m; sourceTree = "<group>"; };
+		18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCESTS.framework; path = BaiduSDK/BaiduBCESTS.framework; sourceTree = "<group>"; };
+		18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBOS.framework; path = BaiduSDK/BaiduBCEBOS.framework; sourceTree = "<group>"; };
+		18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEVOD.framework; path = BaiduSDK/BaiduBCEVOD.framework; sourceTree = "<group>"; };
+		18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBasic.framework; path = BaiduSDK/BaiduBCEBasic.framework; sourceTree = "<group>"; };
+		18EB7B7920161A100016AE72 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EB7B7A20161A100016AE72 /* MobileCoreServices.framework in Frameworks */,
+				18EB7B75201619FB0016AE72 /* BaiduBCESTS.framework in Frameworks */,
+				18EB7B76201619FB0016AE72 /* BaiduBCEBOS.framework in Frameworks */,
+				18EB7B77201619FB0016AE72 /* BaiduBCEVOD.framework in Frameworks */,
+				18EB7B78201619FB0016AE72 /* BaiduBCEBasic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +61,7 @@
 			children = (
 				18EB7B512016124D0016AE72 /* RNBaidu */,
 				18EB7B502016124D0016AE72 /* Products */,
+				18EB7B70201619FB0016AE72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,18 @@
 				18EB7B532016124D0016AE72 /* RNBaidu.m */,
 			);
 			path = RNBaidu;
+			sourceTree = "<group>";
+		};
+		18EB7B70201619FB0016AE72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18EB7B7920161A100016AE72 /* MobileCoreServices.framework */,
+				18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */,
+				18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */,
+				18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */,
+				18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +266,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaiduSDK",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -249,6 +281,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaiduSDK",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

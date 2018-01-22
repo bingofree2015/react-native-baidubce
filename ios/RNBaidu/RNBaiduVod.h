@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface RNBaiduVod : NSObject
-
+- (void)initBaiduBce;
+- (NSString *) uploadVideo:(NSString *)filepath;
+- (void) queryMediaInfo:(NSString *)mediaId;
 @end

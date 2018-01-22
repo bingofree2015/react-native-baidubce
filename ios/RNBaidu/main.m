@@ -12,8 +12,31 @@
 #import "RNBaiduVod.h"
 
 @interface Baidu : NSObject <RCTBridgeModule>
+    RNBaiduVod *vodObj = [[RNBaiduVod alloc] init];
 @end
 
 @implementation Baidu
 
+RCT_EXPORT_MODULE()
+RCT_EXPORT_METHOD(show:(NSString *)message resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+    
+}
+
+RCT_EXPORT_METHOD(applyUploadAndProcess:(NSString *)filePath title:(NSString *)title description:(NSString *)description
+                  resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject ){
+    NSString *mediaId = [vodObj uploadVideo:filePath];
+    if(mediaId != NULL){
+        
+    }else{
+        
+    }
+}
+
+RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+    [vodObj queryMediaInfo:mediaId];
+}
+
+RCT_EXPORT_METHOD(playVideo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+    
+}
 @end

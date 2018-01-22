@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RNBaidu : NSObject
+@interface RNBaiduVod : NSObject
 
 @end

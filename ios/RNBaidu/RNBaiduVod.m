@@ -6,8 +6,8 @@
 //  Copyright © 2018 Baidu. All rights reserved.
 //
 
-#import "RNBaidu.h"
+#import "RNBaiduVod.h"
 
-@implementation RNBaidu
+@implementation RNBaiduVod
 
 @end

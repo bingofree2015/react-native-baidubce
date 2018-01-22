@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18EB7B542016124D0016AE72 /* RNBaidu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaidu.m */; };
-		18EB7B552016124D0016AE72 /* RNBaidu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaidu.h */; };
+		18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaiduVod.m */; };
+		18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaiduVod.h */; };
 		18EB7B75201619FB0016AE72 /* BaiduBCESTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */; };
 		18EB7B76201619FB0016AE72 /* BaiduBCEBOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */; };
 		18EB7B77201619FB0016AE72 /* BaiduBCEVOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */; };
 		18EB7B78201619FB0016AE72 /* BaiduBCEBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */; };
 		18EB7B7A20161A100016AE72 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B7920161A100016AE72 /* MobileCoreServices.framework */; };
+		18EB7B7C201629E70016AE72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B7B201629E70016AE72 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +24,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				18EB7B552016124D0016AE72 /* RNBaidu.h in CopyFiles */,
+				18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,13 +32,14 @@
 
 /* Begin PBXFileReference section */
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		18EB7B522016124D0016AE72 /* RNBaidu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaidu.h; sourceTree = "<group>"; };
-		18EB7B532016124D0016AE72 /* RNBaidu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaidu.m; sourceTree = "<group>"; };
+		18EB7B522016124D0016AE72 /* RNBaiduVod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaiduVod.h; sourceTree = "<group>"; };
+		18EB7B532016124D0016AE72 /* RNBaiduVod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaiduVod.m; sourceTree = "<group>"; };
 		18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCESTS.framework; path = BaiduSDK/BaiduBCESTS.framework; sourceTree = "<group>"; };
 		18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBOS.framework; path = BaiduSDK/BaiduBCEBOS.framework; sourceTree = "<group>"; };
 		18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEVOD.framework; path = BaiduSDK/BaiduBCEVOD.framework; sourceTree = "<group>"; };
 		18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBasic.framework; path = BaiduSDK/BaiduBCEBasic.framework; sourceTree = "<group>"; };
 		18EB7B7920161A100016AE72 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		18EB7B7B201629E70016AE72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +78,9 @@
 		18EB7B512016124D0016AE72 /* RNBaidu */ = {
 			isa = PBXGroup;
 			children = (
-				18EB7B522016124D0016AE72 /* RNBaidu.h */,
-				18EB7B532016124D0016AE72 /* RNBaidu.m */,
+				18EB7B522016124D0016AE72 /* RNBaiduVod.h */,
+				18EB7B532016124D0016AE72 /* RNBaiduVod.m */,
+				18EB7B7B201629E70016AE72 /* main.m */,
 			);
 			path = RNBaidu;
 			sourceTree = "<group>";
@@ -151,7 +154,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB7B542016124D0016AE72 /* RNBaidu.m in Sources */,
+				18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */,
+				18EB7B7C201629E70016AE72 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

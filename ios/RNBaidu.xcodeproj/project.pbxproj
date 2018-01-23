@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE7220177C7A009A4F81 /* UIView+Toast.m */; };
 		18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaiduVod.m */; };
 		18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaiduVod.h */; };
 		18EB7B7C201629E70016AE72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B7B201629E70016AE72 /* main.m */; };
@@ -26,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18CEEE7220177C7A009A4F81 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		18CEEE7320177C7A009A4F81 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB7B522016124D0016AE72 /* RNBaiduVod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaiduVod.h; sourceTree = "<group>"; };
 		18EB7B532016124D0016AE72 /* RNBaiduVod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaiduVod.m; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 			children = (
 				18EB7B522016124D0016AE72 /* RNBaiduVod.h */,
 				18EB7B532016124D0016AE72 /* RNBaiduVod.m */,
+				18CEEE7320177C7A009A4F81 /* UIView+Toast.h */,
+				18CEEE7220177C7A009A4F81 /* UIView+Toast.m */,
 				18EB7B7B201629E70016AE72 /* main.m */,
 			);
 			path = RNBaidu;
@@ -126,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */,
 				18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */,
 				18EB7B7C201629E70016AE72 /* main.m in Sources */,
 			);

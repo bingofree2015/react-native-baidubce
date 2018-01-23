@@ -11,5 +11,6 @@
 @interface RNBaiduVod : NSObject
 - (void)initBaiduBce;
 - (NSString *) uploadVideo:(NSString *)filepath;
-- (void) queryMediaInfo:(NSString *)mediaId;
+- (NSMutableDictionary *) queryMediaInfo:(NSString *)mediaId;
 @end
+ 

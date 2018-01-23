@@ -63,7 +63,7 @@
     
     //上传媒体资源
     if (!mediaIdResponse) {
-        return NULL;
+        return nil;
     }
     NSString *uploadFile = [[NSBundle mainBundle] pathForResource:filepath ofType:nil];
     
@@ -97,7 +97,7 @@
     });
     [task waitUtilFinished];
     if(nUploadResult != 1){
-        return NULL;
+        return nil;
     }
     //处理媒体资源
     VODProcessMediaRequest* submitRequest = [VODProcessMediaRequest new];
@@ -120,12 +120,12 @@
     });
     [task waitUtilFinished];
     if(nTaskResult != 1){
-        return NULL;
+        return nil;
     }
     mediaId = mediaIdResponse.mediaID;
 }
 
-- (void) queryMediaInfo:(NSString *)mediaId{
+- (NSMutableDictionary *) queryMediaInfo:(NSString *)mediaId{
     __block VODGetMediaResponse* response = nil;
     BCETask *task = [vodClient getMedia:mediaId];
     task.then(^(BCEOutput* output) {
@@ -133,11 +133,6 @@
         if (output.response) {//处理媒资请求成功
             //通过返回的response获取mediaId等相关字段
             response = (VODGetMediaResponse*)output.response;
-            
-            NSString *title = response.media.attributes.mediaTitle;
-            NSString *description = response.media.attributes.mediaDescription;
-            NSString *url = response.media.playableUrlList[0].url;
-            int n = 10;
             //处理相关业务逻辑
         }
         
@@ -147,5 +142,37 @@
         }
     });
     [task waitUtilFinished];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if(response != nil){
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.createTime] forKey:@"CreateTime"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.publishTime] forKey:@"PublishTime"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.sour] forKey:@"Source"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.status] forKey:@"Status"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.attributes.mediaTitle] forKey:@"Title"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.attributes.mediaDescription] forKey:@"Description"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.mediaMetadata.sizeInBytes] forKey:@"Size"];
+        [dic setObject:[NSString stringWithFormat:@"%@", response.media.mediaMetadata.durationInSeconds] forKey:@"Length"];
+        
+        NSMutableArray *urlData = [NSMutableArray array];
+        NSArray<VODPlayableURL*> *urlArray = response.media.playableUrlList;
+        for(int i = 0; i< urlArray.count; i++){
+            NSMutableDictionary *urlDic = [NSMutableDictionary dictionary];
+            [urlDic setObject:[NSString stringWithFormat:@"%@", urlArray[i].url] forKey:@"Url"];
+            [urlDic setObject:[NSString stringWithFormat:@"%@", urlArray[i].transcodingPresetName] forKey:@"PresetGroupName"];
+            [urlData addObject:urlDic]
+        }
+        [dic setObject:urlData forKey:@"UrlList"];
+        
+        NSMutableArray *thumbData = [NSMutableArray array];
+        NSArray<VODPlayableURL*> *thumbArray = response.media.thumbnailList;
+        for(int i = 0; i< thumbArray.count; i++){
+            [urlData addObject:thumbArray[i]]
+        }
+        [dic setObject:thumbData forKey:@"ThumbnailList"];
+    }else{
+        
+    }
+    return dic;
 }
 @end

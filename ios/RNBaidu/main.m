@@ -15,7 +15,7 @@
     RNBaiduVod *vodObj = [[RNBaiduVod alloc] init];
 @end
 
-@implementation Baidu
+@implementation BaiduBce
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(show:(NSString *)message resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
@@ -25,15 +25,21 @@ RCT_EXPORT_METHOD(show:(NSString *)message resolve:(RCTPromiseResolveBlock)resol
 RCT_EXPORT_METHOD(applyUploadAndProcess:(NSString *)filePath title:(NSString *)title description:(NSString *)description
                   resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject ){
     NSString *mediaId = [vodObj uploadVideo:filePath];
-    if(mediaId != NULL){
-        
+    if(mediaId != nil){
+        resolve(mediaId);
     }else{
-        
+        reject(@"-1", @"上传文件失败", nil);
     }
 }
 
 RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-    [vodObj queryMediaInfo:mediaId];
+    NSMutableDictionary *data = [vodObj queryMediaInfo:mediaId];
+    if(data.count){
+        resolve(data);
+    }else{
+        reject(@"-1", @"error", nil);
+    }
+    
 }
 
 RCT_EXPORT_METHOD(playVideo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {

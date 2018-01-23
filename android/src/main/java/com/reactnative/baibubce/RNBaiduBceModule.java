@@ -217,7 +217,7 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
                 thumbArray.pushString(thumb);
             }
             map.putArray("ThumbnailList", thumbArray);
-            map.putString("ResponseString", response.toString());
+            //map.putString("ResponseString", response.toString());
             promise.resolve(map);
         }catch (Exception e) {
             e.printStackTrace();

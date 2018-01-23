@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18CEED5A20173E06009A4F81 /* BaiduBCEBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */; };
+		18CEED5B20173E06009A4F81 /* BaiduBCEBOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */; };
+		18CEED5C20173E06009A4F81 /* BaiduBCESTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */; };
+		18CEED5D20173E06009A4F81 /* BaiduBCEVOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */; };
 		18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaiduVod.m */; };
 		18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaiduVod.h */; };
-		18EB7B75201619FB0016AE72 /* BaiduBCESTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B71201619FB0016AE72 /* BaiduBCESTS.framework */; };
-		18EB7B76201619FB0016AE72 /* BaiduBCEBOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B72201619FB0016AE72 /* BaiduBCEBOS.framework */; };
-		18EB7B77201619FB0016AE72 /* BaiduBCEVOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B73201619FB0016AE72 /* BaiduBCEVOD.framework */; };
-		18EB7B78201619FB0016AE72 /* BaiduBCEBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B74201619FB0016AE72 /* BaiduBCEBasic.framework */; };
 		18EB7B7A20161A100016AE72 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7B7920161A100016AE72 /* MobileCoreServices.framework */; };
 		18EB7B7C201629E70016AE72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B7B201629E70016AE72 /* main.m */; };
 /* End PBXBuildFile section */
@@ -47,11 +47,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CEED5A20173E06009A4F81 /* BaiduBCEBasic.framework in Frameworks */,
+				18CEED5B20173E06009A4F81 /* BaiduBCEBOS.framework in Frameworks */,
+				18CEED5C20173E06009A4F81 /* BaiduBCESTS.framework in Frameworks */,
+				18CEED5D20173E06009A4F81 /* BaiduBCEVOD.framework in Frameworks */,
 				18EB7B7A20161A100016AE72 /* MobileCoreServices.framework in Frameworks */,
-				18EB7B75201619FB0016AE72 /* BaiduBCESTS.framework in Frameworks */,
-				18EB7B76201619FB0016AE72 /* BaiduBCEBOS.framework in Frameworks */,
-				18EB7B77201619FB0016AE72 /* BaiduBCEVOD.framework in Frameworks */,
-				18EB7B78201619FB0016AE72 /* BaiduBCEBasic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaiduSDK",
@@ -279,6 +280,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -290,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaiduSDK",

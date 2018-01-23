@@ -7,15 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#if __has_include(<React/RCTConvert.h>)
 #import <React/RCTLog.h>
 #import <React/RCTBridgeModule.h>
+#else
+#import <RCTLog.h>
+#import <RCTBridgeModule.h>
+#endif
+
 #import "RNBaiduVod.h"
 
-@interface Baidu : NSObject <RCTBridgeModule>
-    RNBaiduVod *vodObj = [[RNBaiduVod alloc] init];
+@interface BaiduBce : NSObject <RCTBridgeModule>
 @end
 
-@implementation BaiduBce
+@implementation BaiduBce{
+    RNBaiduVod *vodObj;
+}
+- (instancetype)init
+{
+    if ((self = [super init])) {
+        vodObj = [[RNBaiduVod alloc] init];
+    }
+    return self;
+}
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(show:(NSString *)message resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {

@@ -170,7 +170,7 @@
         NSMutableArray *thumbData = [NSMutableArray array];
         NSArray<NSString*> *thumbArray = response.media.thumbnailList;
         for(int i = 0; i< thumbArray.count; i++){
-            [urlData addObject:thumbArray[i]];
+            [thumbData addObject:thumbArray[i]];
         }
         [dic setObject:thumbData forKey:@"ThumbnailList"];
     }else{

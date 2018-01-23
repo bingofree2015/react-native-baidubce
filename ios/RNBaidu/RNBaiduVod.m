@@ -12,6 +12,8 @@
 #import <BaiduBCEVOD/BaiduBCEVOD.h>
 
 @implementation RNBaiduVod {
+    BOSClient *bosClient;
+    VODClient *vodClient;
 }
 - (instancetype)init
 {
@@ -76,7 +78,7 @@
     putRequest.key = mediaIdResponse.sourceKey;
     putRequest.objectContent = content;
     
-    int nTaskResult = 0;
+    __block int nTaskResult = 0;
     task = [bosClient putObject:putRequest];//此处的bosClient指向之前的步骤中已经鉴权并初始化的VodClient对象
     task.then(^(BCEOutput* output) {
         if (output.progress) {//上传中
@@ -96,7 +98,7 @@
         }
     });
     [task waitUtilFinished];
-    if(nUploadResult != 1){
+    if(nTaskResult != 1){
         return nil;
     }
     //处理媒体资源
@@ -122,7 +124,8 @@
     if(nTaskResult != 1){
         return nil;
     }
-    mediaId = mediaIdResponse.mediaID;
+    NSString *mediaId = mediaIdResponse.mediaID;
+    return mediaId;
 }
 
 - (NSMutableDictionary *) queryMediaInfo:(NSString *)mediaId{
@@ -147,12 +150,12 @@
     if(response != nil){
         [dic setObject:[NSString stringWithFormat:@"%@", response.media.createTime] forKey:@"CreateTime"];
         [dic setObject:[NSString stringWithFormat:@"%@", response.media.publishTime] forKey:@"PublishTime"];
-        [dic setObject:[NSString stringWithFormat:@"%@", response.media.sour] forKey:@"Source"];
+        [dic setObject:[NSString stringWithFormat:@"%@", @""] forKey:@"Source"];
         [dic setObject:[NSString stringWithFormat:@"%@", response.media.status] forKey:@"Status"];
         [dic setObject:[NSString stringWithFormat:@"%@", response.media.attributes.mediaTitle] forKey:@"Title"];
         [dic setObject:[NSString stringWithFormat:@"%@", response.media.attributes.mediaDescription] forKey:@"Description"];
-        [dic setObject:[NSString stringWithFormat:@"%@", response.media.mediaMetadata.sizeInBytes] forKey:@"Size"];
-        [dic setObject:[NSString stringWithFormat:@"%@", response.media.mediaMetadata.durationInSeconds] forKey:@"Length"];
+        [dic setObject:[NSString stringWithFormat:@"%lld", response.media.mediaMetadata.sizeInBytes] forKey:@"Size"];
+        [dic setObject:[NSString stringWithFormat:@"%lld", response.media.mediaMetadata.durationInSeconds] forKey:@"Length"];
         
         NSMutableArray *urlData = [NSMutableArray array];
         NSArray<VODPlayableURL*> *urlArray = response.media.playableUrlList;
@@ -160,14 +163,14 @@
             NSMutableDictionary *urlDic = [NSMutableDictionary dictionary];
             [urlDic setObject:[NSString stringWithFormat:@"%@", urlArray[i].url] forKey:@"Url"];
             [urlDic setObject:[NSString stringWithFormat:@"%@", urlArray[i].transcodingPresetName] forKey:@"PresetGroupName"];
-            [urlData addObject:urlDic]
+            [urlData addObject:urlDic];
         }
         [dic setObject:urlData forKey:@"UrlList"];
         
         NSMutableArray *thumbData = [NSMutableArray array];
-        NSArray<VODPlayableURL*> *thumbArray = response.media.thumbnailList;
+        NSArray<NSString*> *thumbArray = response.media.thumbnailList;
         for(int i = 0; i< thumbArray.count; i++){
-            [urlData addObject:thumbArray[i]]
+            [urlData addObject:thumbArray[i]];
         }
         [dic setObject:thumbData forKey:@"ThumbnailList"];
     }else{

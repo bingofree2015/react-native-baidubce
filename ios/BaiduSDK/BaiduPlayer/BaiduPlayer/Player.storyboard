@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,7 @@
         <!--PlayerVC-->
         <scene sceneID="q5i-6b-Ly1">
             <objects>
-                <viewController id="rlw-t5-57X" customClass="PlayerVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerVC" id="rlw-t5-57X" customClass="PlayerVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SHF-dL-RDh"/>
                         <viewControllerLayoutGuide type="bottom" id="Jmj-3J-JRB"/>

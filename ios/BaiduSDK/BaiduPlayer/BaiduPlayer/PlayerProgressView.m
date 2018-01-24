@@ -11,16 +11,22 @@
 @interface PlayerProgressView ()
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UISlider *sliderView;
+@property (nonatomic, strong) NSBundle *assetBundle;
 @end
 
 @implementation PlayerProgressView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        self.assetBundle = [NSBundle bundleForClass:[self class]];
+        NSString *bundlePath = [self.assetBundle pathForResource:@"Player" ofType:@"bundle"];
+        if (bundlePath) {
+            self.assetBundle = [NSBundle bundleWithPath:bundlePath];
+        }
         
-        [self.sliderView setMinimumTrackImage:[UIImage imageNamed:@"slider_track"] forState:UIControlStateNormal];
-        [self.sliderView setMaximumTrackImage:[UIImage imageNamed:@"slider_background"] forState:UIControlStateNormal];
-        [self.sliderView setThumbImage:[UIImage imageNamed:@"slider_point"] forState:UIControlStateNormal];
+        [self.sliderView setMinimumTrackImage:[UIImage imageNamed:@"slider_track" inBundle:self.assetBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        [self.sliderView setMaximumTrackImage:[UIImage imageNamed:@"slider_background" inBundle:self.assetBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        [self.sliderView setThumbImage:[UIImage imageNamed:@"slider_point" inBundle:self.assetBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     }
     
     return self;

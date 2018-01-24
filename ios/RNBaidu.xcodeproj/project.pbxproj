@@ -8,22 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE7220177C7A009A4F81 /* UIView+Toast.m */; };
-		18CEEE9B20179D10009A4F81 /* PlayerControlViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE8420179D0A009A4F81 /* PlayerControlViewModel.m */; };
-		18CEEE9C20179D10009A4F81 /* PlayerVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE8720179D0B009A4F81 /* PlayerVolumeView.m */; };
-		18CEEE9D20179D10009A4F81 /* PlayerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE8920179D0B009A4F81 /* PlayerViewModel.m */; };
-		18CEEE9E20179D10009A4F81 /* TouchOptimizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE8A20179D0B009A4F81 /* TouchOptimizationView.m */; };
-		18CEEE9F20179D10009A4F81 /* PlayerLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9220179D0D009A4F81 /* PlayerLabelView.m */; };
-		18CEEEA020179D10009A4F81 /* PlayerControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9420179D0D009A4F81 /* PlayerControlVC.m */; };
-		18CEEEA120179D10009A4F81 /* PlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9520179D0E009A4F81 /* PlayerModel.m */; };
-		18CEEEA220179D10009A4F81 /* BitrateMapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9620179D0E009A4F81 /* BitrateMapItem.m */; };
-		18CEEEA320179D10009A4F81 /* PlayerControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9720179D0E009A4F81 /* PlayerControlModel.m */; };
-		18CEEEA420179D10009A4F81 /* PlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9920179D0F009A4F81 /* PlayerProgressView.m */; };
-		18CEEEA520179D10009A4F81 /* PlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE9A20179D0F009A4F81 /* PlayerVC.m */; };
-		18CEEEAA20179F11009A4F81 /* Defines.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEEA820179F10009A4F81 /* Defines.m */; };
 		18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaiduVod.m */; };
 		18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaiduVod.h */; };
 		18EB7B7C201629E70016AE72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B7B201629E70016AE72 /* main.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18C8FF422018D05700C29BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3350D20188BDC00A45204;
+			remoteInfo = BaiduPlayer;
+		};
+		18C8FF442018D05700C29BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3351620188BDC00A45204;
+			remoteInfo = BaiduPlayerTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		18EB7B4D2016124D0016AE72 /* CopyFiles */ = {
@@ -39,35 +44,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BaiduPlayer.xcodeproj; path = BaiduSDK/BaiduPlayer/BaiduPlayer.xcodeproj; sourceTree = "<group>"; };
 		18CEEE7220177C7A009A4F81 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		18CEEE7320177C7A009A4F81 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
-		18CEEE8420179D0A009A4F81 /* PlayerControlViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlViewModel.m; sourceTree = "<group>"; };
-		18CEEE8520179D0A009A4F81 /* PlayerLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLabelView.h; sourceTree = "<group>"; };
-		18CEEE8620179D0B009A4F81 /* PlayerVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVolumeView.h; sourceTree = "<group>"; };
-		18CEEE8720179D0B009A4F81 /* PlayerVolumeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVolumeView.m; sourceTree = "<group>"; };
-		18CEEE8820179D0B009A4F81 /* PlayerControlVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlVC.h; sourceTree = "<group>"; };
-		18CEEE8920179D0B009A4F81 /* PlayerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewModel.m; sourceTree = "<group>"; };
-		18CEEE8A20179D0B009A4F81 /* TouchOptimizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchOptimizationView.m; sourceTree = "<group>"; };
-		18CEEE8B20179D0C009A4F81 /* PlayerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewModel.h; sourceTree = "<group>"; };
-		18CEEE8C20179D0C009A4F81 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerModel.h; sourceTree = "<group>"; };
-		18CEEE8D20179D0C009A4F81 /* PlayerControlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlModel.h; sourceTree = "<group>"; };
-		18CEEE8E20179D0C009A4F81 /* PlayerControlDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlDelegate.h; sourceTree = "<group>"; };
-		18CEEE8F20179D0C009A4F81 /* PlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerProgressView.h; sourceTree = "<group>"; };
-		18CEEE9020179D0C009A4F81 /* PlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVC.h; sourceTree = "<group>"; };
-		18CEEE9120179D0C009A4F81 /* TouchOptimizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchOptimizationView.h; sourceTree = "<group>"; };
-		18CEEE9220179D0D009A4F81 /* PlayerLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLabelView.m; sourceTree = "<group>"; };
-		18CEEE9320179D0D009A4F81 /* BitrateMapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitrateMapItem.h; sourceTree = "<group>"; };
-		18CEEE9420179D0D009A4F81 /* PlayerControlVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlVC.m; sourceTree = "<group>"; };
-		18CEEE9520179D0E009A4F81 /* PlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerModel.m; sourceTree = "<group>"; };
-		18CEEE9620179D0E009A4F81 /* BitrateMapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitrateMapItem.m; sourceTree = "<group>"; };
-		18CEEE9720179D0E009A4F81 /* PlayerControlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlModel.m; sourceTree = "<group>"; };
-		18CEEE9820179D0F009A4F81 /* PlayerControlViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlViewModel.h; sourceTree = "<group>"; };
-		18CEEE9920179D0F009A4F81 /* PlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerProgressView.m; sourceTree = "<group>"; };
-		18CEEE9A20179D0F009A4F81 /* PlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVC.m; sourceTree = "<group>"; };
-		18CEEEA620179D2E009A4F81 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
-		18CEEEA720179D4A009A4F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		18CEEEA820179F10009A4F81 /* Defines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defines.m; sourceTree = "<group>"; };
-		18CEEEA920179F10009A4F81 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB7B522016124D0016AE72 /* RNBaiduVod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaiduVod.h; sourceTree = "<group>"; };
 		18EB7B532016124D0016AE72 /* RNBaiduVod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaiduVod.m; sourceTree = "<group>"; };
@@ -85,45 +64,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18CEEE8320179CE4009A4F81 /* VideoPlayer */ = {
+		18C8FF3C2018D04100C29BC9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				18CEEEA920179F10009A4F81 /* Defines.h */,
-				18CEEEA820179F10009A4F81 /* Defines.m */,
-				18CEEE9320179D0D009A4F81 /* BitrateMapItem.h */,
-				18CEEE9620179D0E009A4F81 /* BitrateMapItem.m */,
-				18CEEE8E20179D0C009A4F81 /* PlayerControlDelegate.h */,
-				18CEEE8D20179D0C009A4F81 /* PlayerControlModel.h */,
-				18CEEE9720179D0E009A4F81 /* PlayerControlModel.m */,
-				18CEEE8820179D0B009A4F81 /* PlayerControlVC.h */,
-				18CEEE9420179D0D009A4F81 /* PlayerControlVC.m */,
-				18CEEE9820179D0F009A4F81 /* PlayerControlViewModel.h */,
-				18CEEE8420179D0A009A4F81 /* PlayerControlViewModel.m */,
-				18CEEE8520179D0A009A4F81 /* PlayerLabelView.h */,
-				18CEEE9220179D0D009A4F81 /* PlayerLabelView.m */,
-				18CEEE8C20179D0C009A4F81 /* PlayerModel.h */,
-				18CEEE9520179D0E009A4F81 /* PlayerModel.m */,
-				18CEEE8F20179D0C009A4F81 /* PlayerProgressView.h */,
-				18CEEE9920179D0F009A4F81 /* PlayerProgressView.m */,
-				18CEEE9020179D0C009A4F81 /* PlayerVC.h */,
-				18CEEE9A20179D0F009A4F81 /* PlayerVC.m */,
-				18CEEE8B20179D0C009A4F81 /* PlayerViewModel.h */,
-				18CEEE8920179D0B009A4F81 /* PlayerViewModel.m */,
-				18CEEE8620179D0B009A4F81 /* PlayerVolumeView.h */,
-				18CEEE8720179D0B009A4F81 /* PlayerVolumeView.m */,
-				18CEEE9120179D0C009A4F81 /* TouchOptimizationView.h */,
-				18CEEE8A20179D0B009A4F81 /* TouchOptimizationView.m */,
-				18CEEEA620179D2E009A4F81 /* Player.storyboard */,
-				18CEEEA720179D4A009A4F81 /* Assets.xcassets */,
+				18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */,
 			);
-			name = VideoPlayer;
+			name = Library;
+			sourceTree = "<group>";
+		};
+		18C8FF3E2018D05700C29BC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18C8FF432018D05700C29BC9 /* BaiduPlayer.framework */,
+				18C8FF452018D05700C29BC9 /* BaiduPlayerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18C8FF462018D14800C29BC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		18EB7B462016124D0016AE72 = {
 			isa = PBXGroup;
 			children = (
+				18C8FF3C2018D04100C29BC9 /* Library */,
 				18EB7B512016124D0016AE72 /* RNBaidu */,
 				18EB7B502016124D0016AE72 /* Products */,
+				18C8FF462018D14800C29BC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,7 +109,6 @@
 		18EB7B512016124D0016AE72 /* RNBaidu */ = {
 			isa = PBXGroup;
 			children = (
-				18CEEE8320179CE4009A4F81 /* VideoPlayer */,
 				18EB7B522016124D0016AE72 /* RNBaiduVod.h */,
 				18EB7B532016124D0016AE72 /* RNBaiduVod.m */,
 				18CEEE7320177C7A009A4F81 /* UIView+Toast.h */,
@@ -193,6 +163,12 @@
 			mainGroup = 18EB7B462016124D0016AE72;
 			productRefGroup = 18EB7B502016124D0016AE72 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 18C8FF3E2018D05700C29BC9 /* Products */;
+					ProjectRef = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				18EB7B4E2016124D0016AE72 /* RNBaidu */,
@@ -200,26 +176,31 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		18C8FF432018D05700C29BC9 /* BaiduPlayer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BaiduPlayer.framework;
+			remoteRef = 18C8FF422018D05700C29BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18C8FF452018D05700C29BC9 /* BaiduPlayerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BaiduPlayerTests.xctest;
+			remoteRef = 18C8FF442018D05700C29BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18EB7B4B2016124D0016AE72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18CEEEA420179D10009A4F81 /* PlayerProgressView.m in Sources */,
 				18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */,
-				18CEEE9D20179D10009A4F81 /* PlayerViewModel.m in Sources */,
-				18CEEEA520179D10009A4F81 /* PlayerVC.m in Sources */,
-				18CEEE9E20179D10009A4F81 /* TouchOptimizationView.m in Sources */,
-				18CEEE9B20179D10009A4F81 /* PlayerControlViewModel.m in Sources */,
-				18CEEEA020179D10009A4F81 /* PlayerControlVC.m in Sources */,
-				18CEEE9F20179D10009A4F81 /* PlayerLabelView.m in Sources */,
-				18CEEE9C20179D10009A4F81 /* PlayerVolumeView.m in Sources */,
 				18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */,
-				18CEEEA120179D10009A4F81 /* PlayerModel.m in Sources */,
-				18CEEEA220179D10009A4F81 /* BitrateMapItem.m in Sources */,
-				18CEEEA320179D10009A4F81 /* PlayerControlModel.m in Sources */,
 				18EB7B7C201629E70016AE72 /* main.m in Sources */,
-				18CEEEAA20179F11009A4F81 /* Defines.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +314,7 @@
 		18EB7B592016124D0016AE72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -355,6 +337,7 @@
 		18EB7B5A2016124D0016AE72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

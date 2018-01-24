@@ -57,13 +57,19 @@
 @property (assign, nonatomic) NSTimeInterval currentPlaybackTime;
 @property (assign, nonatomic) double speed;
 @property (strong, nonatomic) NSArray<BitrateMapItem*>* sortedIndexList;
-
+@property (nonatomic, strong) NSBundle *assetBundle;
 @end
 
 @implementation PlayerControlVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.assetBundle = [NSBundle bundleForClass:[self class]];
+    NSString *bundlePath = [self.assetBundle pathForResource:@"Player" ofType:@"bundle"];
+    if (bundlePath) {
+        self.assetBundle = [NSBundle bundleWithPath:bundlePath];
+    }
     
     self.volumeView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     [self optimizationView].progressView = self.slider;
@@ -177,13 +183,13 @@
         case BDCloudMediaPlayerPlaybackStateStopped:
         case BDCloudMediaPlayerPlaybackStateInterrupted:
             self.actionButton.enabled = YES;
-            [self.actionButton setImage:[UIImage imageNamed:@"button_play"]
+            [self.actionButton setImage:[UIImage imageNamed:@"button_play" inBundle:self.assetBundle compatibleWithTraitCollection:nil]
                                forState:UIControlStateNormal];
             
             break;
         case BDCloudMediaPlayerPlaybackStatePlaying:
             NSLog(@"state changed to BDCloudMediaPlayerPlaybackStatePlaying!!!!!!!!");
-            [self.actionButton setImage:[UIImage imageNamed:@"button_pause"]
+            [self.actionButton setImage:[UIImage imageNamed:@"button_pause" inBundle:self.assetBundle compatibleWithTraitCollection:nil]
                                forState:UIControlStateNormal];
             for (UIButton* button in buttons) {
                 button.enabled = YES;
@@ -192,7 +198,7 @@
             break;
         case BDCloudMediaPlayerPlaybackStatePaused:
             NSLog(@"state changed to BDCloudMediaPlayerPlaybackStatePaused!!!!!!!!");
-            [self.actionButton setImage:[UIImage imageNamed:@"button_play"]
+            [self.actionButton setImage:[UIImage imageNamed:@"button_play" inBundle:self.assetBundle compatibleWithTraitCollection:nil]
                                forState:UIControlStateNormal];
             for (UIButton* button in buttons) {
                 button.enabled = YES;
@@ -312,6 +318,7 @@
 - (IBAction)onBack:(id)sender {
     [self stopTimer];
     [self.delegate controlStop];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)onDownload:(id)sender {

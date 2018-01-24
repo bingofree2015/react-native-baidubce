@@ -16,6 +16,9 @@
 #endif
 #import "RNBaiduVod.h"
 #import "UIView+Toast.h"
+#import "PlayerViewModel.h"
+#import "PlayerVC.h"
+#import <BDCloudMediaPlayer/BDCloudMediaPlayer.h>
 
 NSInteger const LRDRCTSimpleToastBottomOffset = 40;
 double const LRDRCTSimpleToastShortDuration = 3.0;
@@ -44,6 +47,7 @@ NSInteger const LRDRCTSimpleToastGravityTop = 3;
                                                      name:UIKeyboardWillHideNotification
                                                    object:nil];
         vodObj = [[RNBaiduVod alloc] init];
+        [[BDCloudMediaPlayerAuth sharedInstance] setAccessKey:@"724c9abc6cd9403daece9d4d17c3e31b"];
     }
     return self;
 }
@@ -134,6 +138,31 @@ RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveB
 }
 
 RCT_EXPORT_METHOD(playVideo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-    
+    /*
+    NSMutableDictionary *data = [vodObj queryMediaInfo:mediaId];
+    if(data.count){
+        
+        NSString *title = [data objectForKey:@"Title"];
+        NSMutableArray *urlArray = [data objectForKey:@"UrlList"];
+        NSString *url = [[urlArray objectAtIndex:0] objectForKey:@"Url"];
+        */
+        NSString *title = @"Title";
+        NSString *url = mediaId;
+        PlayerViewModel* viewModel = [[PlayerViewModel alloc] initWithURL:url title:title downloadable:false];
+        viewModel.videoSource = nil;
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Player" bundle:nil];
+        PlayerVC *vc = (PlayerVC*)[sb instantiateViewControllerWithIdentifier:@"PlayerVC"];
+        vc.viewModel = viewModel;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIView *root = [[[[[UIApplication sharedApplication] delegate] window] rootViewController] view];
+            UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+            [rootViewController presentViewController:vc animated:NO completion:nil];
+        });
+    /*
+    }else{
+        reject(@"-1", @"error", nil);
+    }
+     */
 }
 @end

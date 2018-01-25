@@ -137,15 +137,28 @@ RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveB
 RCT_EXPORT_METHOD(playVideo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *data = [vodObj queryMediaInfo:mediaId];
     if(data.count){
-        
-        NSString *title = [data objectForKey:@"Title"];
-        NSMutableArray *urlArray = [data objectForKey:@"UrlList"];
-        NSString *url = [[urlArray objectAtIndex:0] objectForKey:@"Url"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            BaiduPlayerController *player = [[BaiduPlayerController alloc] init];
-            [player play:url title:title];
-        })
-    ;
+        NSString *status  = [data objectForKey:@"Status"];
+        if( [status isEqualToString:@"RUNNING"] == YES){
+            reject(@"-1", @"转码中", nil);
+        }else if( [status isEqualToString:@"PUBLISHED"] == YES){
+            NSString *title = [data objectForKey:@"Title"];
+            NSMutableArray *urlArray = [data objectForKey:@"UrlList"];
+            NSString *url = [[urlArray objectAtIndex:0] objectForKey:@"Url"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                BaiduPlayerController *player = [[BaiduPlayerController alloc] init];
+                [player play:url title:title];
+            });
+        }else if( [status isEqualToString:@"FAILED"] == YES){
+            reject(@"-1", @"转码失败", nil);
+        }else if( [status isEqualToString:@"PROCESSING"] == YES){
+            reject(@"-1", @"内部处理中", nil);
+        }else if( [status isEqualToString:@"DISABLED"] == YES){
+            reject(@"-1", @"已停用", nil);
+        }else if( [status isEqualToString:@"BANNED"] == YES){
+            reject(@"-1", @"已屏蔽", nil);
+        }else{
+            reject(@"-1", @"未知错误", nil);
+        }
     }else{
         reject(@"-1", @"error", nil);
     }

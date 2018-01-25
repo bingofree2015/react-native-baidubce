@@ -14,16 +14,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18C8FF422018D05700C29BC9 /* PBXContainerItemProxy */ = {
+		1858801F201989DB0050136D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+			containerPortal = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 18F3350D20188BDC00A45204;
 			remoteInfo = BaiduPlayer;
 		};
-		18C8FF442018D05700C29BC9 /* PBXContainerItemProxy */ = {
+		18588021201989DB0050136D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+			containerPortal = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 18F3351620188BDC00A45204;
 			remoteInfo = BaiduPlayerTests;
@@ -44,7 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BaiduPlayer.xcodeproj; path = BaiduSDK/BaiduPlayer/BaiduPlayer.xcodeproj; sourceTree = "<group>"; };
+		1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BaiduPlayer.xcodeproj; path = BaiduSDK/BaiduPlayer/BaiduPlayer.xcodeproj; sourceTree = "<group>"; };
 		18CEEE7220177C7A009A4F81 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		18CEEE7320177C7A009A4F81 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,21 +64,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1858801B201989DA0050136D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18588020201989DB0050136D /* BaiduPlayer.framework */,
+				18588022201989DB0050136D /* BaiduPlayerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		18C8FF3C2018D04100C29BC9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */,
+				1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */,
 			);
 			name = Library;
-			sourceTree = "<group>";
-		};
-		18C8FF3E2018D05700C29BC9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18C8FF432018D05700C29BC9 /* BaiduPlayer.framework */,
-				18C8FF452018D05700C29BC9 /* BaiduPlayerTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		18C8FF462018D14800C29BC9 /* Frameworks */ = {
@@ -165,8 +165,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 18C8FF3E2018D05700C29BC9 /* Products */;
-					ProjectRef = 18C8FF3D2018D05700C29BC9 /* BaiduPlayer.xcodeproj */;
+					ProductGroup = 1858801B201989DA0050136D /* Products */;
+					ProjectRef = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -177,18 +177,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		18C8FF432018D05700C29BC9 /* BaiduPlayer.framework */ = {
+		18588020201989DB0050136D /* BaiduPlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = BaiduPlayer.framework;
-			remoteRef = 18C8FF422018D05700C29BC9 /* PBXContainerItemProxy */;
+			remoteRef = 1858801F201989DB0050136D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		18C8FF452018D05700C29BC9 /* BaiduPlayerTests.xctest */ = {
+		18588022201989DB0050136D /* BaiduPlayerTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = BaiduPlayerTests.xctest;
-			remoteRef = 18C8FF442018D05700C29BC9 /* PBXContainerItemProxy */;
+			remoteRef = 18588021201989DB0050136D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -314,6 +314,7 @@
 		18EB7B592016124D0016AE72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = YES;
@@ -325,18 +326,21 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/BaiduSDK/BaiduPlayer",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		18EB7B5A2016124D0016AE72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = YES;
@@ -348,11 +352,13 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/BaiduSDK/BaiduPlayer",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

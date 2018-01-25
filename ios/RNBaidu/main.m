@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #if __has_include(<React/RCTConvert.h>)
-#import <React/RCTLog.h>
-#import <React/RCTBridgeModule.h>
+    #import <React/RCTLog.h>
+    #import <React/RCTBridgeModule.h>
+    #import <React/RCTEventEmitter.h>
 #else
-#import <RCTLog.h>
-#import <RCTBridgeModule.h>
+    #import <RCTLog.h>
+    #import <RCTBridgeModule.h>
+    #import <RCTEventEmitter.h>
 #endif
 #import "RNBaiduVod.h"
 #import "UIView+Toast.h"
@@ -25,7 +27,7 @@ NSInteger const LRDRCTSimpleToastGravityBottom = 1;
 NSInteger const LRDRCTSimpleToastGravityCenter = 2;
 NSInteger const LRDRCTSimpleToastGravityTop = 3;
 
-@interface BaiduBce : NSObject <RCTBridgeModule>
+@interface BaiduBce : RCTEventEmitter <RCTBridgeModule>
 @end
 
 @implementation BaiduBce{
@@ -60,6 +62,10 @@ NSInteger const LRDRCTSimpleToastGravityTop = 3;
 
 - (void)keyboardWillHiden:(NSNotification *)notification {
     _keyOffset = 0;
+}
+
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"videoUploadStatus"]; //return @[@"videoUploadStatus", @"asdfasdf"];
 }
 
 RCT_EXPORT_MODULE()
@@ -116,7 +122,7 @@ RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration grav
 
 RCT_EXPORT_METHOD(applyUploadAndProcess:(NSString *)filePath title:(NSString *)title description:(NSString *)description
                   resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject ){
-    NSString *mediaId = [vodObj uploadVideo:filePath];
+    NSString *mediaId = [vodObj uploadVideo:filePath title:title description:description eventDispatcher:self];
     if(mediaId != nil){
         resolve(mediaId);
     }else{
@@ -131,7 +137,6 @@ RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveB
     }else{
         reject(@"-1", @"error", nil);
     }
-    
 }
 
 RCT_EXPORT_METHOD(playVideo:(NSString *)mediaId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {

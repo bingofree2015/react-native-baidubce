@@ -45,7 +45,7 @@
     vodConfig.credentials = credentials;
     vodClient = [[VODClient alloc] initWithConfiguration:vodConfig];
 }
-- (NSString *) uploadVideo:(NSString *)filepath {
+- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher{
     VODGenerateMediaIDRequest* request = [[VODGenerateMediaIDRequest alloc] init];
     //request.mode = @"<mode>";
     __block VODGenerateMediaIDResponse* mediaIdResponse = nil;
@@ -67,7 +67,7 @@
     if (!mediaIdResponse) {
         return nil;
     }
-    NSString *uploadFile = [[NSBundle mainBundle] pathForResource:filepath ofType:nil];
+    //NSString *uploadFile = [[NSBundle mainBundle] pathForResource:filepath ofType:nil];
     
     BOSObjectContent* content = [[BOSObjectContent alloc] init];
     //content.objectData.file = uploadFile;
@@ -84,7 +84,8 @@
         if (output.progress) {//上传中
             //处理相关逻辑
             //可以通过 output.progress.floatValue 获取当前上传进度
-            nTaskResult = 0;
+            NSString *percent = [NSString stringWithFormat:@"%0.1f", output.progress.floatValue];
+            [eventDispatcher sendEventWithName:@"videoUploadStatus" body:percent];
         }
         
         if (output.response) {//上传成功
@@ -104,9 +105,9 @@
     //处理媒体资源
     VODProcessMediaRequest* submitRequest = [VODProcessMediaRequest new];
     submitRequest.mediaId = mediaIdResponse.mediaID;
-    submitRequest.attributes.mediaTitle = @"Title";
-    submitRequest.attributes.mediaDescription = @"Upload Video from iOS";
-    submitRequest.sourceExtension = @"MOV";
+    submitRequest.attributes.mediaTitle = title;
+    submitRequest.attributes.mediaDescription = description;
+    submitRequest.sourceExtension = [filepath pathExtension];
     submitRequest.transcodingPresetGroupName = @"vod.inbuilt.adaptive.hls";
     
     task = [vodClient processMedia:submitRequest];

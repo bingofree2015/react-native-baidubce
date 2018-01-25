@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#if __has_include(<React/RCTConvert.h>)
+    #import <React/RCTEventEmitter.h>
+#else
+    #import <RCTEventEmitter.h>
+#endif
 
 @interface RNBaiduVod : NSObject
 - (void)initBaiduBce;
-- (NSString *) uploadVideo:(NSString *)filepath;
+- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher;
 - (NSMutableDictionary *) queryMediaInfo:(NSString *)mediaId;
 @end
  

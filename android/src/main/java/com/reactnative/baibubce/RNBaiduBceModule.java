@@ -32,6 +32,7 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
+import com.reactnative.baibubce.Utils;
 import com.reactnative.baiducloud.videoplayer.AdvancedPlayActivity;
 import com.reactnative.baiducloud.videoplayer.SimplePlayActivity;
 import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
@@ -56,6 +57,7 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
     public RNBaiduBceModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
+        Utils.setReactContext(reactContext);
         initVodAndBosClient();
     }
 
@@ -96,19 +98,11 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(String message, final Promise promise) {
         Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
-        this.emit("observerShow", "call function success");
+        Utils.emit("observerShow", "call function success");
         if(!message.isEmpty()){
             promise.resolve("success");
         }else{
             promise.reject("400", "empty string");
-        }
-    }
-
-    public void emit(String eventName, Object data){
-        try {
-            this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, data);
-        } catch (Exception e){
-            e.printStackTrace();;
         }
     }
 

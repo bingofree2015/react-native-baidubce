@@ -3,6 +3,7 @@ package com.reactnative.baibubce;
 import android.util.Log;
 
 import com.baidubce.services.bos.BosClient;
+import com.baidubce.services.bos.callback.BosProgressCallback;
 import com.baidubce.services.bos.model.AbortMultipartUploadRequest;
 import com.baidubce.services.bos.model.CompleteMultipartUploadRequest;
 import com.baidubce.services.bos.model.CompleteMultipartUploadResponse;
@@ -50,6 +51,9 @@ public class FileUploadSession {
     private File file;
     private List<PartETag> partETags;
 
+    long[] currentUploads;
+    private long totalFileLength = 0;
+
     public FileUploadSession(BosClient bosClient) {
         this.bosClient = bosClient;
     }
@@ -66,6 +70,11 @@ public class FileUploadSession {
             parts++;
         }
         partETags = new ArrayList<PartETag>(parts);
+        currentUploads = new long[parts];
+        for(int i = 0; i < currentUploads.length; i++){
+            currentUploads[i] = 0;
+        }
+        totalFileLength = fileLength;
 
         initMultipartUpload();
         int processors = Runtime.getRuntime().availableProcessors();
@@ -158,6 +167,21 @@ public class FileUploadSession {
                 uploadPartRequest.setPartSize(partSize);
                 // part number is 1-based
                 uploadPartRequest.setPartNumber(partNum + 1);
+                uploadPartRequest.setProgressCallback(new BosProgressCallback<UploadPartRequest>() {
+                    @Override
+                    public void onProgress(UploadPartRequest request, long currentSize, long totalSize) {
+                        super.onProgress(request, currentSize, totalSize);
+                        currentUploads[request.getPartNumber() - 1] = currentSize;
+                        long currentUploadLength = 0;
+                        for(int i = 0; i < currentUploads.length; i++){
+                            currentUploadLength += currentUploads[i];
+                        }
+                        double percent = ((double) currentUploadLength * 100) / (double)totalFileLength;
+                        String strpercent = String.format("%.1f", percent);
+                        Utils.sendUploadProgress(strpercent);
+                        Log.v("Upload Progress", String.format("%d\t%d\t%d\t%d\t%d\t%s", request.getPartNumber() - 1, currentSize, totalSize, currentUploadLength, totalFileLength, strpercent));
+                    }
+                });
                 UploadPartResponse uploadPartResponse = bosClient.uploadPart(uploadPartRequest);
 
                 // add ETag to result list

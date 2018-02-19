@@ -1,6 +1,0 @@
-framework module BDCloudMediaDownloader {
-  umbrella header "BDCloudMediaDownloader.h"
-
-  export *
-  module * { export * }
-}

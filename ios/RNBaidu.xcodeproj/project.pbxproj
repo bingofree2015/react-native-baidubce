@@ -7,28 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEEE7220177C7A009A4F81 /* UIView+Toast.m */; };
 		18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B532016124D0016AE72 /* RNBaiduVod.m */; };
 		18EB7B552016124D0016AE72 /* RNBaiduVod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EB7B522016124D0016AE72 /* RNBaiduVod.h */; };
 		18EB7B7C201629E70016AE72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7B7B201629E70016AE72 /* main.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1858801F201989DB0050136D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 18F3350D20188BDC00A45204;
-			remoteInfo = BaiduPlayer;
-		};
-		18588021201989DB0050136D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 18F3351620188BDC00A45204;
-			remoteInfo = BaiduPlayerTests;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		18EB7B4D2016124D0016AE72 /* CopyFiles */ = {
@@ -44,13 +26,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BaiduPlayer.xcodeproj; path = BaiduSDK/BaiduPlayer/BaiduPlayer.xcodeproj; sourceTree = "<group>"; };
-		18CEEE7220177C7A009A4F81 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
-		18CEEE7320177C7A009A4F81 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		18EB7B4F2016124D0016AE72 /* libRNBaidu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBaidu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB7B522016124D0016AE72 /* RNBaiduVod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaiduVod.h; sourceTree = "<group>"; };
 		18EB7B532016124D0016AE72 /* RNBaiduVod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaiduVod.m; sourceTree = "<group>"; };
 		18EB7B7B201629E70016AE72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3349CD5C203ABECE00653215 /* BaiduBCEBasic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBasic.framework; path = BaiduSDK/BaiduBCEBasic.framework; sourceTree = "<group>"; };
+		3349CD5F203ABECE00653215 /* BaiduBCEVOD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEVOD.framework; path = BaiduSDK/BaiduBCEVOD.framework; sourceTree = "<group>"; };
+		3349CD60203ABECE00653215 /* BaiduBCESTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCESTS.framework; path = BaiduSDK/BaiduBCESTS.framework; sourceTree = "<group>"; };
+		3349CD61203ABECE00653215 /* BaiduBCEBOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduBCEBOS.framework; path = BaiduSDK/BaiduBCEBOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,26 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1858801B201989DA0050136D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18588020201989DB0050136D /* BaiduPlayer.framework */,
-				18588022201989DB0050136D /* BaiduPlayerTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		18C8FF3C2018D04100C29BC9 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */,
-			);
-			name = Library;
-			sourceTree = "<group>";
-		};
 		18C8FF462018D14800C29BC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3349CD5C203ABECE00653215 /* BaiduBCEBasic.framework */,
+				3349CD61203ABECE00653215 /* BaiduBCEBOS.framework */,
+				3349CD60203ABECE00653215 /* BaiduBCESTS.framework */,
+				3349CD5F203ABECE00653215 /* BaiduBCEVOD.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,7 +61,6 @@
 		18EB7B462016124D0016AE72 = {
 			isa = PBXGroup;
 			children = (
-				18C8FF3C2018D04100C29BC9 /* Library */,
 				18EB7B512016124D0016AE72 /* RNBaidu */,
 				18EB7B502016124D0016AE72 /* Products */,
 				18C8FF462018D14800C29BC9 /* Frameworks */,
@@ -111,8 +80,6 @@
 			children = (
 				18EB7B522016124D0016AE72 /* RNBaiduVod.h */,
 				18EB7B532016124D0016AE72 /* RNBaiduVod.m */,
-				18CEEE7320177C7A009A4F81 /* UIView+Toast.h */,
-				18CEEE7220177C7A009A4F81 /* UIView+Toast.m */,
 				18EB7B7B201629E70016AE72 /* main.m */,
 			);
 			path = RNBaidu;
@@ -163,12 +130,6 @@
 			mainGroup = 18EB7B462016124D0016AE72;
 			productRefGroup = 18EB7B502016124D0016AE72 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1858801B201989DA0050136D /* Products */;
-					ProjectRef = 1858801A201989DA0050136D /* BaiduPlayer.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				18EB7B4E2016124D0016AE72 /* RNBaidu */,
@@ -176,29 +137,11 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		18588020201989DB0050136D /* BaiduPlayer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BaiduPlayer.framework;
-			remoteRef = 1858801F201989DB0050136D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18588022201989DB0050136D /* BaiduPlayerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BaiduPlayerTests.xctest;
-			remoteRef = 18588021201989DB0050136D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXSourcesBuildPhase section */
 		18EB7B4B2016124D0016AE72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18CEEE7420177C7A009A4F81 /* UIView+Toast.m in Sources */,
 				18EB7B542016124D0016AE72 /* RNBaiduVod.m in Sources */,
 				18EB7B7C201629E70016AE72 /* main.m in Sources */,
 			);

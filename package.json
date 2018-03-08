@@ -1,49 +1,22 @@
 {
-  "_from": "git+https://github.com/andrei0807/react-native-baidubce.git",
-  "_id": "react-native-baidubce@0.0.1",
-  "_inBundle": false,
-  "_location": "/react-native-baidubce",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "git",
-    "raw": "react-native-baidubce@git+https://github.com/andrei0807/react-native-baidubce.git",
-    "name": "react-native-baidubce",
-    "escapedName": "react-native-baidubce",
-    "rawSpec": "git+https://github.com/andrei0807/react-native-baidubce.git",
-    "saveSpec": "git+https://github.com/andrei0807/react-native-baidubce.git",
-    "fetchSpec": "https://github.com/andrei0807/react-native-baidubce.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "git+https://github.com/andrei0807/react-native-baidubce.git#890f380169ac9f1a85509d486e0580916c3e1dae",
-  "_spec": "react-native-baidubce@git+https://github.com/andrei0807/react-native-baidubce.git",
-  "_where": "/Users/sky/Desktop/jnyulu_react_native/jnyulu",
-  "bugs": {
-    "url": "https://github.com/andrei0807/react-native-baidubce/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
-  "homepage": "https://github.com/andrei0807/react-native-baidubce#readme",
-  "keywords": [
-    "react-native",
-    "android",
-    "library"
-  ],
-  "license": "Unlicense",
   "name": "react-native-baidubce",
-  "peerDependencies": {
-    "react-native": ">=0.38.0"
-  },
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrei0807/react-native-baidubce.git"
-  },
+  "version": "0.0.1",
+  "main": "index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
-  "version": "0.0.1"
+  "keywords": [
+    "react-native"
+  ],
+  "repository" :
+  {
+    "type": "git",
+    "url": "git+https://github.com/andrei0807/react-native-baidubce.git"
+  },
+  "author": "",
+  "license": "",
+  "peerDependencies": {
+    "react-native": ">=0.47.0"
+  }
 }

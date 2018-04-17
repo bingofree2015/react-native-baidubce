@@ -42,7 +42,6 @@ repositories {
 dependencies {
     compile files('libs/vod_upload_with_bos.jar')
     compile files('libs/agent_lss-4.3.0-20171222.071535-1.jar')
-    compile files('libs/bdplayer.jar')
     compile 'com.facebook.react:react-native:+'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
 }

@@ -33,9 +33,6 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.reactnative.baibubce.FileUploadSession;
 import com.reactnative.baibubce.Utils;
-import com.reactnative.baiducloud.videoplayer.AdvancedPlayActivity;
-import com.reactnative.baiducloud.videoplayer.SimplePlayActivity;
-import com.reactnative.baiducloud.videoplayer.info.VideoInfo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -216,37 +213,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         }catch (Exception e) {
             e.printStackTrace();
             promise.reject("400","error");
-        }
-    }
-    @ReactMethod
-    public void playVideo(final String mediaId, final Promise promise){
-        GetMediaResourceResponse response = vodClient.getMediaResource(uploadedMediaId);
-        String title = response.getAttributes().getTitle();
-        String url = response.getPlayableUrlList().get(0).getUrl();
-        String status = response.getStatus();
-        if(status.equals("RUNNING")){
-            promise.reject("400", "转码中");
-        }else if(status.equals("PUBLISHED")){
-            promise.resolve("已发布");
-            VideoInfo info = new VideoInfo(title, url);
-            Intent intent = null;
-            // SimplePlayActivity简易播放窗口，便于快速了解播放流程
-            intent = new Intent(getReactApplicationContext(), SimplePlayActivity.class);
-            // AdvancedPlayActivity高级播放窗口，内含丰富的播放控制逻辑
-            //intent = new Intent(getReactApplicationContext(), AdvancedPlayActivity.class);
-            intent.putExtra("videoInfo", info);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getReactApplicationContext().startActivity(intent);
-        }else if(status.equals("FAILED")){
-            promise.reject("400", "转码失败");
-        }else if(status.equals("PROCESSING")){
-            promise.reject("400", "内部处理中");
-        }else if(status.equals("DISABLED")){
-            promise.reject("400", "已停用");
-        }else if(status.equals("BANNED")){
-            promise.reject("400", "已屏蔽");
-        }else{
-            promise.reject("400", "未知错误");
         }
     }
     /**

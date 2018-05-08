@@ -17,6 +17,8 @@
     #import <RCTEventEmitter.h>
 #endif
 #import "RNBaiduVod.h"
+#import "MiPushSDK.h"
+#import <sys/utsname.h>
 
 @interface BaiduBce : RCTEventEmitter <RCTBridgeModule>
 @end
@@ -78,5 +80,18 @@ RCT_EXPORT_METHOD(queryMediaInfo:(NSString *)mediaId resolve:(RCTPromiseResolveB
     }else{
         reject(@"-1", @"error", nil);
     }
+}
+
+RCT_EXPORT_METHOD(getXiaomiRegId:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+    NSString *regId = [MiPushSDK getRegId];
+    if(regId == NULL){
+        regId = @"";
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:regId forKey:@"regId"];
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    [dic setObject:[NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding] forKey:@"deviceName"];
+    resolve(dic);
 }
 @end

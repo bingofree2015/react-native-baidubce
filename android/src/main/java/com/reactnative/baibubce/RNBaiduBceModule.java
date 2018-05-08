@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -90,7 +91,6 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
         vodClient = new VodClient(vodConfig);
         bosClient = new BosClient(bosConfig);
     }
-
 
     @ReactMethod
     public void show(String message, final Promise promise) {
@@ -342,5 +342,38 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
      */
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+    /////////////// 小米推送
+    @ReactMethod
+    public void getXiaomiRegId(final Promise promise) {
+        String regId = Utils.getMiPushRegid(getReactApplicationContext());
+        if(regId == null){
+            regId = "";
+        }
+        WritableMap map = Arguments.createMap();
+        map.putString("regId", regId);
+        map.putString("deviceName", getDeviceName());
+        promise.resolve(map);
+    }
+
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if(model.toLowerCase().startsWith(manufacturer.toLowerCase())) {
+            return capitalize(model);
+        }else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+    public String capitalize(String s){
+        if (s == null || s.length() == 0){
+            return "";
+        }
+        char first = s.charAt(0);
+        if(Character.isUpperCase(first)){
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
+        }
     }
 }

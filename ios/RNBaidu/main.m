@@ -65,11 +65,12 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(applyUploadAndProcess:(NSString *)filePath title:(NSString *)title description:(NSString *)description
                   resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject ){
-    NSString *mediaId = [vodObj uploadVideo:filePath title:title description:description eventDispatcher:self];
+    NSString *errorString = @"";
+    NSString *mediaId = [vodObj uploadVideo:filePath title:title description:description eventDispatcher:self errorString:&errorString];
     if(mediaId != nil){
         resolve(mediaId);
     }else{
-        reject(@"-1", @"上传文件失败", nil);
+        reject(errorString, @"error", nil);
     }
 }
 

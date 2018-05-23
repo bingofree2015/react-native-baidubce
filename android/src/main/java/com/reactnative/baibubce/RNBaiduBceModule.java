@@ -159,14 +159,14 @@ public class RNBaiduBceModule extends ReactContextBaseJavaModule {
                     } else {
                         //"上传文件失败"
                         Log.v("SelfMsg", "failed");
-                        promise.reject("400", "上传文件失败");
+                        promise.reject("视频上传中错误发送", "error");
                     }
 
                 } catch (Throwable e) {
                     e.printStackTrace();
                     // Exception means status failed
                     //"上传失败，错误信息：" + e.getMessage()
-                    promise.reject("401", "上传文件失败");
+                    promise.reject("上传失败，错误信息：" + e.getMessage(), "error");
                 }
             }
         }.start();

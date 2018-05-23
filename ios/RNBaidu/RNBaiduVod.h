@@ -15,7 +15,7 @@
 
 @interface RNBaiduVod : NSObject
 - (void)initBaiduBce;
-- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher;
+- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher errorString:(NSString **)errorString;
 - (NSMutableDictionary *) queryMediaInfo:(NSString *)mediaId;
 @end
  

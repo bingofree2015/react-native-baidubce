@@ -45,7 +45,7 @@
     vodConfig.credentials = credentials;
     vodClient = [[VODClient alloc] initWithConfiguration:vodConfig];
 }
-- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher{
+- (NSString *) uploadVideo:(NSString *)filepath title:(NSString *)title description:(NSString *)description eventDispatcher:(RCTEventEmitter *)eventDispatcher errorString:(NSString **)errorString{
     VODGenerateMediaIDRequest* request = [[VODGenerateMediaIDRequest alloc] init];
     //request.mode = @"<mode>";
     __block VODGenerateMediaIDResponse* mediaIdResponse = nil;
@@ -59,12 +59,14 @@
         }
         if (output.error) {
             //执行任务失败相关逻辑代码
+            *errorString = [output.error localizedDescription];
         }
     });
     [task waitUtilFinished];
     
     //上传媒体资源
     if (!mediaIdResponse) {
+        *errorString = @"";
         return nil;
     }
     //NSString *uploadFile = [[NSBundle mainBundle] pathForResource:filepath ofType:nil];
@@ -95,6 +97,7 @@
         
         if (output.error) {//上传错误
             //处理相关逻辑
+            *errorString = [output.error localizedDescription];
             nTaskResult = -1;
         }
     });
@@ -118,6 +121,7 @@
         }
         if (output.error) {//处理媒资请求错误
             //处理相关业务逻辑
+            *errorString = [output.error localizedDescription];
             nTaskResult = -1;
         }
     });
